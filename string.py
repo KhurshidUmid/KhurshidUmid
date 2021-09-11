@@ -1,24 +1,29 @@
-""" randomString(n) - generates random string with length n, and default parameters:
-hasUpper=true hasLower=true hasDigit hasSpaces hasSpecial """
-import random
-def randomString(strlen, hasUpper = True, hasLower = True, hasDigit = True, hasSpecial = True, hasSpaces = False):
-    data_set = """"""
-    ascii = """ABCDEFGHIGKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~`!@#$%^&*()_+?></.,;: """
-    if hasUpper:
-        data_set += ascii[0:26]
-    if hasLower:
-        data_set += ascii[26:52]
-    if hasSpaces:
-        data_set += ascii[84]
-    if hasDigit:
-        data_set += ascii[52:62]
-    if hasSpecial:
-        data_set += ascii[62:84]
-    word = """"""
-    for i in range(strlen):
-        index = random.randint(0, len(data_set)-1)
-        word += data_set[index]
+"""Create a class named 'Rectangle' with two data members 'length' and 'breadth' and two methods to print the area
+ and perimeter of the rectangle respectively. Its constructor having parameters for length and breadth is used to 
+ initialize length and breadth of the rectangle. Let class 'Square' inherit the 'Rectangle' class with its constructor
+  having a parameter for its side (suppose s) calling the constructor of its parent class as 'super(s,s)'. Print the 
+  area and perimeter of a rectangle and a square.
+"""
+
+class Rectangle:
+    def __init__(self, length, breadth):
+        self.length = length
+        self.breadth = breadth
     
-    return word
+    def area(self):
+        print(f"Area: {self.length*self.breadth}")
     
-print(randomString(20, hasSpaces=True))
+    def perimeter(self):
+        print(f"Perimeter: {self.breadth + self.length}")
+
+class Square(Rectangle):
+    def __init__(self, side):
+        super().__init__(length = side, breadth = side)
+
+
+sq = Square(4)
+rc = Rectangle(4, 5)
+
+sq.area()
+rc.area()
+sq.perimeter()
